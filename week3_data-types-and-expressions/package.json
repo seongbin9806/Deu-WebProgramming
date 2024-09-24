@@ -1,0 +1,14 @@
+{
+  "name": "data_types_and_expressions",
+  "version": "0.0.1",
+  "description": "This project is for students who just started to study javaScript.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
