@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>6칙연산 계산기</title>
+    </head>
+    <body>
+        <div>
+            <h1>Arithmetic Operations</h1>
+            <div>
+                <input type="number" id="lval" placeholder="Enter Left number"/>
+            </div>
+            <div></div>
+                <input type="number" id="rval" placeholder="Enter Right number"/>
+            </div>
+        </div>
+
+        <div>
+            <button onclick="operate('+')">Add</button>
+            <button onclick="operate('-')">Subtract</button>
+            <button onclick="operate('*')">Multiply</button>
+            <button onclick="operate('/')">Divide</button>
+            <button onclick="operate('&')">Modulo</button>
+            <button onclick="operate('**')">Power</button>
+        </div>
+
+        <div>
+            <h3>Result: </h3>
+            <p id="result">0</p>
+        </div>
+
+        <script>
+            function operate(opr){
+                let lval = Number(document.getElementById('lval').value);
+                let rval = Number(document.getElementById('rval').value);
+                var res;
+
+                switch(opr){
+                    case '+':
+                        res = lval + rval;
+                    break;
+                    case '-':
+                        res = lval - rval;
+                    break;
+                    case '*':
+                        res = lval * rval;
+                    break;
+                    case '/':
+                        res = lval / rval;
+                    break;
+                    case '&':
+                        res = lval & rval;
+                    break;
+                    case '**':
+                        res = lval ** rval;
+                    break;
+                }
+                
+                document.getElementById('result').textContent = res;
+            }
+        </script>
+    </body>
+</html>

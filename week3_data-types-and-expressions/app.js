@@ -55,3 +55,24 @@ console.log(typeof undefined); // undefined = undefined 아무것도 정의되�
 // (자료형)변수명
 console.log(Boolean(null)); // false, null은 0이므로 false로 반환된다.
 console.log(Number(Boolean(str4.length))); // 1, true로 변환 -> true는 1이므로 1이 출력
+
+var psn = {
+    name: 'John',
+    age: 39,
+    isFemale: false,
+    height: 180,
+    weight: 74.0
+}
+
+console.log(psn);
+
+psn.weight -= 1.2; // 멤버 변수 접근 방법
+console.log(psn);
+
+psn['age'] -= 1; // 해싱 문법 이용
+console.log(psn['age']);
+
+var input;
+input = (input == undefined? 0 : input);
+input = input?? 0;
+console.log(input);
