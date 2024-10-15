@@ -1,0 +1,64 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Factorial & Fibonacci Calculator</h1>
+
+        <div>
+            <input type="number" id="numberInput" placeholder="Enter a number" min="0"/>
+        </div>
+
+        <div>
+            <div>
+                <input type="radio" name="oper" id="factiorial" value="factorial" checked>
+                <label for="factiorial">Factorial</label>
+            </div>
+
+            <div>
+                <input type="radio" name="oper" id="fibonacci" value="fibonacci" checked>
+                <label for="fibonacci">fibonacci</label>
+            </div>
+        </div>
+
+        <button onclick="performCalculation()">Calculate</button>
+
+        <div>
+            <h4>Result:</h4>
+            <p id="result">0</p>
+        </div>
+
+        <script>
+            const factorial = function(n){
+               if(n < 2){
+                    return 1;
+               }
+
+               return n * factorial(n - 1);
+            }
+
+            const fibonacci = function(n){
+                if(n < 2){
+                    return n;
+                }
+
+                return fibonacci(n - 1) + fibonacci(n - 2);
+            }
+            
+            const operations = {
+                factorial: factorial,
+                fibonacci: fibonacci
+            }
+
+            function performCalculation(){
+                const number = parseInt(document.getElementById('numberInput').value);
+                const selectedOperation = document.querySelector('input[name="oper"]:checked').value;
+
+                const result = operations[selectedOperation](number);
+
+                document.getElementById('result').textContent = result;
+            }
+        </script>
+    </body>
+</html>

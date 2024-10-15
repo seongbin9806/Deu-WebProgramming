@@ -1,0 +1,84 @@
+<html></html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Arithmetic with Tetration</h1>
+
+        <div>
+            <input type="number" id="number1" placeholder="Enter a first number" min="0"/>
+        </div>
+
+        <div>
+            <input type="number" id="number2" placeholder="Enter a sencod number" min="0"/>
+        </div>
+
+        <div>
+            <div>
+                <input type="radio" name="oper" id="add" value="add" checked>
+                <label for="add">+</label>
+            </div>
+
+            <div></div>
+                <input type="radio" name="oper" id="subtract" value="subtract">
+                <label for="subtract">-</label>
+            </div>
+
+            <div>
+                <input type="radio" name="oper" id="multiply" value="multiply">
+                <label for="multiply">x</label>
+            </div>
+
+
+            <div>
+                <input type="radio" name="oper" id="divide" value="divide">
+                <label for="divide">/</label>
+            </div>
+
+            <div>
+                <input type="radio" name="oper" id="modulo" value="modulo">
+                <label for="modulo">%</label>
+            </div>
+
+            <div>
+                <input type="radio" name="oper" id="power" value="power">
+                <label for="power">x<sub>y</sub></label>
+            </div>
+
+            <div>
+                <input type="radio" name="oper" id="tetration" value="tetration">
+                <label for="tetration">y<sub>x</sub></label>
+            </div>
+        </div>
+
+        <button onclick="performCalculation()">Calculate</button>
+
+        <div>
+            <h4>Result:</h4>
+            <p id="result">0</p>
+        </div>
+
+        <script> 
+            const operations = {
+                add: (a,  b) => a + b,
+                subtract: (a, b) => a - b,
+                multiply: (a,  b) => a * b,
+                divide: (a,  b) => a / b,
+                modulo: (a,  b) => a % b,
+                power: (a,  b) => a ** b,
+                tetration: (a,  b) => b ** a
+            }
+
+            function performCalculation(){
+                const number1 = parseInt(document.getElementById('number1').value);
+                const number2 = parseInt(document.getElementById('number2').value);
+                const selectedOperation = document.querySelector('input[name="oper"]:checked').value;
+
+                const result = operations[selectedOperation](number1, number2);
+
+                document.getElementById('result').textContent = result;
+            }
+        </script>
+    </body>
+</html>
