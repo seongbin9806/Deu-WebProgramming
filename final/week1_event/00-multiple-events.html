@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistical Analysis wuth Checkboxes</title>
+</head>
+<body>
+    <h2>통계 분석 도구</h2>
+
+    <label for="dataInput">숫자 배열 입력 (쉼표로 구분):</label>
+    <input type="text" id="dataInput" placeholder="예: 10,20,30,40,50">
+    <br>
+
+    <h3>계산할 통계 선택: </h3>
+    <input type="checkbox" id="avgChkbox">
+    <label for="avgChkbox">평균</label>
+    <br>
+
+    <input type="checkbox" id="medChkbox">
+    <label for="medChkbox">중앙값</label>
+    <br>
+
+    <input type="checkbox" id="minChkbox">
+    <label for="minChkbox">최솟값</label>
+    <br>
+
+    <input type="checkbox" id="maxChkbox">
+    <label for="maxChkbox">최댓값</label>
+    <br>
+
+    <input type="checkbox" id="stdChkbox">
+    <label for="stdChkbox">표준편차</label>
+    <br>
+
+    <button id="analyzeBtn">결과 확인</button>
+    <button id="clrBtn">결과 삭제</button>
+
+    <h3>결과:</h3>
+    <p id="resTxt"></p>
+
+    <script>
+        const clrBtn = document.getElementById('clrBtn');
+
+        document.getElementById('avgChkbox').addEventListener('change', function(){
+            toggleCallback('avgChkbox', calculateAverage);
+        });
+
+        document.getElementById('medChkbox').addEventListener('change', function(){
+            toggleCallback('medChkbox', calculateMedian);
+        });
+
+        document.getElementById('minChkbox').addEventListener('change', function(){
+            toggleCallback('minChkbox', calculateMin);
+        });
+
+        document.getElementById('maxChkbox').addEventListener('change', function(){
+            toggleCallback('maxChkbox', calculateMax);
+        });
+
+        document.getElementById('stdChkbox').addEventListener('change', function(){
+            toggleCallback('stdChkbox', calculateStd);
+        });
+
+        function toggleCallback(checkboxId, callback){
+            const checkbox = document.getElementById(checkboxId);
+            const analyzButton = document.getElementById('analyzeBtn');
+
+            if(checkbox.checked){
+                analyzButton.addEventListener('click', callback);
+            }else{
+                analyzButton.removeEventListener('click', callback);
+            }
+        }
+
+        function perforAnalysis(){
+            const dataInput = document.getElementById('dataInput').value;
+            const dataArray = dataInput.split(',').map(Number).sort((a, b) => a - b);
+            return dataArray;
+        }
+
+        function calculateAverage(){
+            const dataArray = perforAnalysis();
+            const average = dataArray.reduce((acc, val) => acc + val, 0) / dataArray.length;
+
+            displayResult(`평균: ${average.toFixed(2)}<br>`);
+        }
+
+        function calculateMedian() {
+            const dataArray = perforAnalysis();
+            const mid = Math.floor(dataArray.length / 2);
+            const median = dataArray.length % 2 !== 0? dataArray[mid] : (dataArray[mid - 1] + dataArray[mid]) / 2;
+
+            displayResult(`중앙값: ${median}<br>`);
+        }
+
+        function calculateMin() {
+            const dataArray = perforAnalysis();
+            const min = Math.min(...dataArray);
+
+            displayResult(`최소값: ${min}<br>`);
+        }
+
+        function calculateMax() {
+            const dataArray = perforAnalysis();
+            const max = Math.max(...dataArray);
+
+            displayResult(`최대값: ${max}<br>`);
+        }
+        
+        function calculateStd() {
+            const dataArray = perforAnalysis();
+            const mean = dataArray.reduce((acc, val) => acc + val, 0) / dataArray.length;
+            const variance = dataArray.reduce((acc, val) => acc + Math.pow(val - mean, 20), 0) / dataArray.length;
+            const stdDev = Math.sqrt(variance);
+
+            displayResult(`표준편차: ${stdDev}<br>`);
+        }
+
+        function displayResult(result){
+            const resultText = document.getElementById('resTxt');
+
+            resultText.innerHTML += result;
+        }
+
+        clrBtn.onclick = function(){
+            const resultText = document.getElementById('resTxt');
+
+            resultText.innerHTML = '';
+        }
+    </script>
+</body>
+</html>

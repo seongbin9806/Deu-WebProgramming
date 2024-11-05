@@ -48,7 +48,7 @@
 
             <div>
                 <input type="radio" name="oper" id="tetration" value="tetration">
-                <label for="tetration">y<sub>x</sub></label>
+                <label for="tetration"><sub>y</sub>x</label>
             </div>
         </div>
 
@@ -67,7 +67,16 @@
                 divide: (a,  b) => a / b,
                 modulo: (a,  b) => a % b,
                 power: (a,  b) => a ** b,
-                tetration: (a,  b) => b ** a
+                tetration: (a,  b) => {
+                    let result = a;
+                    
+                    for(let i = 1; i < b; i++){
+                        result = a ** result;
+                        if(result > 1e10){
+                            return 'Result is too large';
+                        }
+                    }
+                }
             }
 
             function performCalculation(){
