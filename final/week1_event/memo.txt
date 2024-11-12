@@ -1,0 +1,20 @@
+Layerd Architecture
+실질적표준 - TCP/IP Protocol Suite (5)
+
+Application 
+Transport Port
+Network IP
+Data Link MAC
+
+Rest란? - 휴식하다.
+- 컴퓨터 사이에 상호작용
+- 시스템에 요청할 수 있는 걸 허용한다.
+@(CRUD)
+Create(POST), Read(GET), Update(Put), Detele(Detele)
+이 4가지만 있으면 서버상의 자원을 다 관리 할 수 있다.
+
+
+a: REST
+b: stateless
+c: operation
+d: 
