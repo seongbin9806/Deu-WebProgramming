@@ -1,0 +1,24 @@
+1. Cookie
+
+APP
+TRANSP (HEADER가 붙음)
+NET (주소 HEADER -> PORT) - 목적지APP PORT
+LINK (링크 HEADER -> IP) - 목적지주소 IP
+PHY ( MAC ADDRESS )
+->P
+-------------------
+
+N
+L
+P
+
+-------------
+
+SERVER
+
+SERVER에서는 최종적으로 APP만 남음
+
+2. Session
+사용자 - 서버 사이에 사전에 교감
+
+3. Oracle DB - MS(Management System)
